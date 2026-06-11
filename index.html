@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Дневник настроения</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+    <header class="header">
+        <h1>Дневник настроения</h1>
+        <p class="subtitle">Информационная система для фиксации эмоционального состояния и анализа динамики настроения</p>
+    </header>
+
+    <main class="main-grid">
+        <section class="card form-card">
+        <h2>Запись настроения</h2>
+
+        <form id="moodForm">
+            <div class="form-group">
+            <label for="dateInput">Дата</label>
+            <input type="date" id="dateInput" required />
+            </div>
+
+            <div class="form-group">
+            <label for="moodInput">Настроение (1–5)</label>
+            <select id="moodInput" required>
+                <option value="">Выберите оценку</option>
+                <option value="1">1 — очень плохо</option>
+                <option value="2">2 — плохо</option>
+                <option value="3">3 — нормально</option>
+                <option value="4">4 — хорошо</option>
+                <option value="5">5 — отлично</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label for="noteInput">Заметка</label>
+            <textarea id="noteInput" maxlength="200" rows="4" placeholder="Кратко опишите, что повлияло на настроение..."></textarea>
+            </div>
+
+            <div class="btn-group">
+            <button type="submit" class="btn-primary">Сохранить запись</button>
+            <button type="button" id="clearFormBtn" class="btn-outline">Очистить форму</button>
+            </div>
+        </form>
+        </section>
+
+        <section class="card filter-card">
+        <h2>Просмотр по периоду</h2>
+
+        <div class="form-group">
+            <label for="startDate">Дата начала</label>
+            <input type="date" id="startDate" />
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">Дата окончания</label>
+            <input type="date" id="endDate" />
+        </div>
+
+        <div class="btn-group">
+            <button id="showStatsBtn" class="btn-primary" type="button">Показать статистику</button>
+            <button id="showAllBtn" class="btn-outline" type="button">Показать все записи</button>
+        </div>
+        </section>
+
+        <section class="card stats-card">
+        <h2>Статистика</h2>
+        <div id="statsBlock" class="stats-grid">
+            <div class="stat-item">
+            <span class="stat-label">Среднее настроение</span>
+            <span class="stat-value" id="avgMood">—</span>
+            </div>
+            <div class="stat-item">
+            <span class="stat-label">Максимум</span>
+            <span class="stat-value" id="maxMood">—</span>
+            </div>
+            <div class="stat-item">
+            <span class="stat-label">Минимум</span>
+            <span class="stat-value" id="minMood">—</span>
+            </div>
+            <div class="stat-item">
+            <span class="stat-label">Количество записей</span>
+            <span class="stat-value" id="recordsCount">—</span>
+            </div>
+        </div>
+        </section>
+
+        <section class="card chart-card">
+        <h2>График настроения</h2>
+        <div id="chartContainer" class="chart-container">
+            <canvas id="moodChart"></canvas>
+        </div>
+        </section>
+
+        <section class="card entries-card">
+        <div class="entries-header">
+            <h2>История записей</h2>
+            <button id="deleteAllBtn" class="btn-danger" type="button">Очистить данные</button>
+        </div>
+        <div id="entriesList" class="entries-list">
+            <div class="empty-message">Пока нет записей. Добавьте первую запись в форму выше.</div>
+        </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Дневник настроения — электронная система для самонаблюдения и анализа эмоционального состояния</p>
+    </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
